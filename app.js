@@ -1,6 +1,6 @@
 
 //Pruebas locales
-const base="localhost:8000";
+const base = "http://localhost:8000";
 
 //Para el servidor
 //const base=/api

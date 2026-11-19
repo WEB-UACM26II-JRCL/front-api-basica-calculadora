@@ -1,44 +1,56 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Calculadora · API</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora con autenticación</title>
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
-  <div class="wrap">
-
-    <div class="card">
+  <main class="wrap">
+    <section class="card">
       <h1 class="title">Calculadora con API REST</h1>
-      <p class="msg" id="health-msg">Verificando API…</p>
+      <p class="msg" id="health-msg">Comprobando conexión...</p>
 
-      <form class="form" onsubmit="return false;">
-        <div class="row">
-          <span>Número A</span>
-          <input type="number" id="in-a" step="any" value="2">
-        </div>
-        <div class="row">
-          <span>Número B</span>
-          <input type="number" id="in-b" step="any" value="3">
-        </div>
-
+      <h2>Iniciar sesión</h2>
+      <form class="form" onsubmit="iniciarSesion(); return false;">
+        <label class="row">Usuario
+          <input id="usuario" autocomplete="username" required>
+        </label>
+        <label class="row">Contraseña
+          <input id="password" type="password" autocomplete="current-password" required>
+        </label>
         <div class="actions">
-          <button class="btn" onclick="sumar()">Sumar (GET)</button>
-          <button class="btn ghost" onclick="restar()">Restar (GET)</button>
-          <button class="btn" onclick="multiplicar()">Multiplicar (POST)</button>
-          <button class="btn ghost" onclick="dividir()">Dividir (POST)</button>
-        </div>
-
-        <div class="row">
-          <span>Respuesta</span>
-          <pre class="card" id="out">—</pre>
+          <button class="btn" type="submit">Iniciar sesión</button>
+          <button class="btn ghost" type="button" onclick="renovarDesdeBoton()">Renovar token</button>
+          <button class="btn ghost" type="button" onclick="cerrarSesion()">Salir</button>
         </div>
       </form>
-    </div>
+      <p class="msg" id="sesion-msg">Sin sesión</p>
+    </section>
 
-  </div>
-
+    <section class="card">
+      <h2 class="title">Operaciones</h2>
+      <div class="form">
+        <label class="row">Número A
+          <input type="number" id="in-a" step="any" value="2">
+        </label>
+        <label class="row">Número B
+          <input type="number" id="in-b" step="any" value="3">
+        </label>
+        <div class="actions">
+          <button class="btn operacion" onclick="sumar()" disabled>Sumar (GET)</button>
+          <button class="btn ghost operacion" onclick="restar()" disabled>Restar (GET)</button>
+          <button class="btn operacion" onclick="multiplicar()" disabled>Multiplicar (POST)</button>
+          <button class="btn ghost operacion" onclick="dividir()" disabled>Dividir (POST)</button>
+        </div>
+        <div class="row">
+          <span>Respuesta</span>
+          <pre class="card" id="out">---</pre>
+        </div>
+      </div>
+    </section>
+  </main>
   <script src="app.js"></script>
 </body>
 </html>

@@ -111,3 +111,8 @@ input:focus {
   font-size: 13px;
 }
 .btn-del:hover { background: #dc2626; }
+
+/* Agregar al final de app.css */
+h2 { font-size: 17px; margin: 8px 0; color: #1e3a8a; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; }
